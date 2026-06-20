@@ -15,7 +15,10 @@ while True:
     # match user_action:
     # case 'show' | 'display': for match operator
 
-    if 'add' in user_action:
+    # if 'add' in user_action and 'new' in user_action:
+    # if 'add' in user_action and 'new' not in user_action:
+
+    if 'add' in user_action or 'new' in user_action:
         todo = user_action[4:] # remove first 3 symbols in string
         #  todo = user_action[4:6] # get symbol from 4 to 6
 
@@ -27,11 +30,12 @@ while True:
             with open('files/todos.txt', 'w') as file:
                 pass
 
-            print(f"DEBUG: файл существует после создания? {os.path.exists('files/todos.txt')}")
-            print(f"DEBUG: файлы в папке: {os.listdir('files/')}")
+            # код дальше ← вне with (нет отступа)
+        print(f"DEBUG: файл существует после создания? {os.path.exists('files/todos.txt')}")
+        print(f"DEBUG: файлы в папке: {os.listdir('files/')}")
 
-            print("⚠️  File didn't exist, created it. Please try again!")
-            continue
+        print("⚠️  File didn't exist, created it. Please try again!")
+        continue
 
         # # Чтение
         # with open('todos.txt', 'r') as file:
@@ -119,7 +123,8 @@ while True:
         with open('files/todos.txt', 'r') as file:
             todos = file.readlines()
 
-        number = int(input("number of complete: "))
+       # number = int(input("number of complete: "))
+        number = int(user_action[7:])
 
         index = number - 1
         todo_to_remove = todos[index].strip('\n')
