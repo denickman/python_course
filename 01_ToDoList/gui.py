@@ -1,5 +1,10 @@
 import FreeSimpleGUI as sg
 import todos.todosFunctions as todoFunc
+import os
+
+
+print("📍 Текущая директория:", os.getcwd())
+
 
 label = sg.Text('type in a to-do')
 input_box = sg.InputText(tooltip="Enter a to-do", key="input_box")
@@ -9,35 +14,33 @@ window = sg.Window('My To-do App',
                    layout=[[label, input_box, add_button]],
                    font=('Helvetica', 22))
 
-
 while True:
     event, values = window.read()
 
-    print("Event (Кнопка):", event)           # Add, Cancel, etc.
-    print("Values (Данные):", values)         # {'input_box': 'fuck off'}
+    if event == sg.WIN_CLOSED:
+        break
 
 
-    match event:
-        case "add":
+    if event == "Add":  # Просто проверяем кнопку
+        print("====================")
+        todo_text = values['input_box'].strip()
+
+        print("Add new text:", todo_text)
+
+        if todo_text:  # ← Проверка на не-пустой текст!
+            # Загрузить, добавить, сохранить
             todos = todoFunc.get_todos()
-            new_todo = values['todo'] + "\n"  # get value from dict 'values'
-            todos.append(new_todo)
+            todos.append(todo_text + "\n")
+            print("добавилено в туду лист", todos)
+
             todoFunc.write_todos(todos)
 
-        case sg.WIN_CLOSED:
-            break
+            # Очистить поле ввода
+            window['input_box'].update('')
 
+            print(f"✅ Добавлен: {todo_text}")
+        else:
+            print("❌ Введите что-то!")
 
-
-
-# Получить значение
-    todo_text = values['input_box']
-    print("Юзер ввел:", todo_text)
-
-# Проверить какую кнопку нажали
-    if event == 'Add':
-        print("Добавляем:", todo_text)
-    elif event == sg.WINDOW_CLOSED:
-        print("Окно закрыто")
-
-    window.close()
+window.close()
+print("✅ Приложение закрыто")
