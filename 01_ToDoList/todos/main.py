@@ -1,35 +1,9 @@
-import os
-
-def ensure_file_exists(filepath='../files/todos.txt'):
-    """Создаёт файл и папку если их нет"""
-    # Шаг 1: Проверяем существует ли файл
-    if not os.path.exists(filepath):  # Файла нет?
-
-        # Шаг 2: Выделяем папку из пути
-        directory = os.path.dirname(filepath)  # '../files'
-
-        # Шаг 3: Проверяем существует ли папка
-        if directory and not os.path.exists(directory):
-            # Папка нет → создаём
-            os.makedirs(directory)  # Создаёт '../files'
-
-        # Шаг 4: Создаём пустой файл
-        with open(filepath, 'w') as file:
-            pass  # Создаёт '../files/todos.txt'
+from todos import ensure_file_exists, get_todos, write_todos
 
 
-def get_todos(filepath='../files/todos.txt') -> list:
-    ensure_file_exists(filepath)  # ← ВЫЗОВИ ФУНКЦИЮ!
-    with open(filepath, 'r') as file:  # ✅ Правильно
-        todos_local = file.readlines()
-    return todos_local
 
-
-def write_todos(todos_arg, filepath_arg='../files/todos.txt'):
-    ensure_file_exists(filepath_arg)  # ← ВЫЗОВИ ФУНКЦИЮ!
-    with open(filepath_arg, 'w') as file:  # ✅ Правильно
-        file.writelines(todos_arg)
-
+print(f"📍 Запущен файл: {__file__}")
+print(f"📍 __name__ = {__name__} \n")
 
 
 # 2️⃣ ГЛАВНАЯ ФУНКЦИЯ (main):
@@ -101,13 +75,11 @@ def main():
         else:
             print("❌ Command is not valid.\n")
 
-    print("👋 Bye!") 
+    print("👋 Bye!")
 
 
 main()
 
 
+print(help(ensure_file_exists))
 
-# Это означает:
-# "Запусти main() только если этот файл запущен напрямую,
-#  а не импортирован в другой файл"")

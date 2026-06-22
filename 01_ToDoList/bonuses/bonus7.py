@@ -65,20 +65,20 @@ with open('file.txt', 'r') as file:
 
 
 
-with open('../files/doc.txt') as file:
+with open('../txtFiles/doc.txt') as file:
     for line in file:  # ← это работает как readlines но эффективнее
         print(line.strip())
 
 
 
-with open('../files/doc.txt') as file:
+with open('../txtFiles/doc.txt') as file:
     content = file.read()
     print(type(content))  # <class 'str'>
     print(content)
 
 
 
-with open('../files/doc.txt') as file:
+with open('../txtFiles/doc.txt') as file:
     lines = file.readlines()
     print(type(lines))  # <class 'list'>
     print(lines)

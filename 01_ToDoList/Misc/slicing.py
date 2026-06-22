@@ -1,3 +1,23 @@
+
+
+
+text = "a b c d e"
+
+result = text.split(' ', 1)  # 1 разделение = 2 части
+print(result)
+# ['a', 'b c d e']
+
+result = text.split(' ', 2)  # 2 разделения = 3 части
+print(result)
+# ['a', 'b', 'c d e']
+
+result = text.split(' ', 3)  # 3 разделения = 4 части
+print(result)
+# ['a', 'b', 'c', 'd e']
+
+
+
+
 text = "Hello World"
 text[:5]      # "Hello"
 text[6:]      # "World"

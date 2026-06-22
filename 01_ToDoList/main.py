@@ -1,11 +1,11 @@
 
 import os
 
+print("LAUNCHING TODOS!!!!!")
+print(os.getcwd())  # покажи текущую папку
+print(os.listdir('.'))  # покажи что в папке
 
-# print(os.getcwd())  # покажи текущую папку
-# print(os.listdir('.'))  # покажи что в папке
-
-print(os.listdir('files/'))
+print(os.listdir('txtFiles/'))
 
 while True:
 
@@ -28,15 +28,15 @@ while True:
 
 
         # Check if file exist
-        if not os.path.exists('files/todos.txt'):
+        if not os.path.exists('txtFiles/todos.txt'):
             print("DEBUG: файла нет, пытаемся создать")
 
-            with open('files/todos.txt', 'w') as file:
+            with open('txtFiles/todos.txt', 'w') as file:
                 pass
 
             # код дальше ← вне with (нет отступа)
-        print(f"DEBUG: файл существует после создания? {os.path.exists('files/todos.txt')}")
-        print(f"DEBUG: файлы в папке: {os.listdir('files/')}")
+        print(f"DEBUG: файл существует после создания? {os.path.exists('txtFiles/todos.txt')}")
+        print(f"DEBUG: файлы в папке: {os.listdir('txtFiles/')}")
 
         print("⚠️  File didn't exist, created it. Please try again!")
         continue
@@ -54,45 +54,45 @@ while True:
         #     file.write("новая задача\n")
 
         # Option 1 read
-        # file = open('files/todos.txt', 'r') # read mode
+        # file = open('txtFiles/todos.txt', 'r') # read mode
         # todos = file.readlines()
         # file.close()
 
         #Option 2 read
-        with open('files/todos.txt', 'r') as file:
+        with open('txtFiles/todos.txt', 'r') as file:
             todos = file.readlines()
 
         todos.append(f'{todo}\n')
 
         # Option 1 read store in file
-        # file = open('files/todos.txt', 'w')  # write mode
+        # file = open('txtFiles/todos.txt', 'w')  # write mode
         # file.writelines(todos)
         # file.close()
 
         # Option 2 read store in file
-        with open(f'files/todos.txt', 'w') as file:
+        with open(f'txtFiles/todos.txt', 'w') as file:
             file.writelines(todos)
 
     elif user_action.startswith('show'):
         todo = user_action[4:].strip()  # Добавил .strip()
 
         # Check if file exist
-        if not os.path.exists('files/todos.txt'):
+        if not os.path.exists('txtFiles/todos.txt'):
             print("📁 File created!")
 
-            with open('files/todos.txt', 'w') as file:
+            with open('txtFiles/todos.txt', 'w') as file:
                 pass
             # НЕ используем continue - продолжаем дальше!
 
         # Теперь код выполнится:
         try:
-            with open('files/todos.txt', 'r') as file:
+            with open('txtFiles/todos.txt', 'r') as file:
                 todos = file.readlines()
 
             if todo:  # Если пользователь ввел текст после "show"
                 todos.append(f'{todo}\n')
 
-                with open('files/todos.txt', 'w') as file:
+                with open('txtFiles/todos.txt', 'w') as file:
                     file.writelines(todos)
 
                 print(f"✅ Added: {todo}")
@@ -107,7 +107,7 @@ while True:
     elif user_action in ['show', 'display']:
         # or -> if 'show' in user_action or 'display' in user_action:
 
-       file = open('files/todos.txt', 'r')
+       file = open('txtFiles/todos.txt', 'r')
        todos = file.readlines()
        file.close()
 
@@ -131,7 +131,7 @@ while True:
 
     # Previous Option with is not
     # elif 'edit' in user_action:
-    #     with open('files/todos.txt', 'r') as file:
+    #     with open('txtFiles/todos.txt', 'r') as file:
     #         todos = file.readlines()
     #
     #         if not todos:
@@ -149,14 +149,14 @@ while True:
     #     new_todo = input("Enter new todo: ")
     #     todos[number] = new_todo
     #
-    #     with open('files/todos.txt', 'w') as file:
+    #     with open('txtFiles/todos.txt', 'w') as file:
     #         file.writelines(todos)
 
 
     # New approach with try
     elif 'edit' in user_action:
         try:
-            with open('files/todos.txt', 'r') as file:
+            with open('txtFiles/todos.txt', 'r') as file:
                 todos = file.readlines()
 
             if not todos:
@@ -177,7 +177,7 @@ while True:
 
             todos[number] = f"{new_todo}\n"
 
-            with open('files/todos.txt', 'w') as file:
+            with open('txtFiles/todos.txt', 'w') as file:
                 file.writelines(todos)
 
             print(f"✅ Todo #{number + 1} updated!")
@@ -196,7 +196,7 @@ while True:
 
     elif 'remove' in user_action:
         try:
-            with open('files/todos.txt', 'r') as file:
+            with open('txtFiles/todos.txt', 'r') as file:
                 todos = file.readlines()
 
             number = int(user_action[7:])
@@ -208,7 +208,7 @@ while True:
 
             todo_to_remove = todos.pop(index)
 
-            with open('files/todos.txt', 'w') as file:
+            with open('txtFiles/todos.txt', 'w') as file:
                 file.writelines(todos)
 
             print(f"✅ todo '{todo_to_remove.strip()}' was removed!")

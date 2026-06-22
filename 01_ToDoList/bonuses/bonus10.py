@@ -1,7 +1,7 @@
 
 
 def get_average():
-    with open("../files/data.txt") as f:
+    with open("../txtFiles/data.txt") as f:
         data = f.readlines()
 
         values = data[1:]
