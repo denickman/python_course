@@ -1,8 +1,6 @@
 import os
 
 
-
-
 date = input("enter today day: ")
 mood = input("enter your mood from 1 to 10: ")
 thoughts = input("let your thoughts flow: \n")
