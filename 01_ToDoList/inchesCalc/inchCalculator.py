@@ -12,3 +12,6 @@ feet = get_feet()
 inches = get_inches()
 result = convert(feet, inches)
 print(f"\n✅ {result}")
+
+
+import time

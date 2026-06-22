@@ -1,6 +1,9 @@
 from todos import ensure_file_exists, get_todos, write_todos
+import time
 
-
+print("======time=======")
+now = time.strftime("%b %d, %Y %H:%M:%S")
+print(now)
 
 print(f"📍 Запущен файл: {__file__}")
 print(f"📍 __name__ = {__name__} \n")
