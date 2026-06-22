@@ -1,6 +1,8 @@
 # from todos import ensure_file_exists - wrong
 from .filesChecker import ensure_file_exists
 
+FILEPATH = "../txtFiles/todos.txt"
+
 def get_todos(filepath='../txtFiles/todos.txt') -> list:
     ensure_file_exists(filepath)  # ← ВЫЗОВИ ФУНКЦИЮ!
     with open(filepath, 'r') as file:  # ✅ Правильно
